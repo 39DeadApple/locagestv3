@@ -1,0 +1,206 @@
+# 🚗 LocaGest MVP – WordPress Fleet SaaS Core
+
+LocaGest MVP is a lightweight WordPress plugin that transforms a standard website into a **fleet management + car rental system** with GPS tracking integration and automation hooks.
+
+This project is designed as a **starting point for building a SaaS platform** for car rental agencies, beginning with a real-world MVP and evolving into a scalable architecture.
+
+---
+
+## 🧠 Features
+
+* 🚗 Car Management (Custom Post Type)
+* 📅 Booking System (basic logic + extensible)
+* 👤 Customer Handling
+* 📄 Contract Generation (MVP)
+* 🛰 GPS Tracking Integration (Traccar)
+* 🔗 Automation Hooks (Make.com via Webhooks)
+* 🎛 Admin Dashboard (SaaS-style UI base)
+
+---
+
+## 🧩 Architecture Overview
+
+Frontend + Logic (WordPress Plugin)
+⬇
+Automation Layer (Make.com)
+⬇
+Tracking Engine (Traccar)
+
+This separation allows LocaGest to evolve into a **full SaaS system** without being locked into WordPress.
+
+---
+
+## 📦 Installation
+
+1. Download or clone this repository:
+
+```bash
+git clone https://github.com/your-username/locagest-mvp.git
+```
+
+2. Zip the folder:
+
+```bash
+zip -r locagest-mvp.zip locagest-mvp/
+```
+
+3. Upload to WordPress:
+
+* Go to **Plugins → Add New**
+* Click **Upload Plugin**
+* Upload the ZIP file
+* Activate the plugin
+
+---
+
+## ⚙️ Configuration
+
+### 1. Traccar Setup
+
+Edit the file:
+
+```
+/includes/class-traccar.php
+```
+
+Update:
+
+```php
+private static $base_url = 'http://YOUR_TRACCAR_SERVER:8082';
+```
+
+Add your credentials if required.
+
+---
+
+### 2. Make.com Webhook
+
+Edit:
+
+```
+/includes/class-bookings.php
+```
+
+Replace:
+
+```php
+https://hook.make.com/YOUR_WEBHOOK
+```
+
+with your actual webhook URL.
+
+---
+
+### 3. GPS Device Assignment
+
+Each car must have:
+
+* `traccar_device_id` (custom field)
+
+---
+
+## 🗺 Usage
+
+### Display Live Tracking Map
+
+Use shortcode:
+
+```text
+[locagest_live_map car_id="123"]
+```
+
+This will render a live map using GPS data from Traccar.
+
+---
+
+### Booking Flow
+
+1. Customer submits booking
+2. Booking is created
+3. Data is sent to Make.com
+4. GPS device is assigned
+5. Tracking becomes active
+
+---
+
+## 🤖 AI Development Workflow (Recommended)
+
+This project is optimized to be built using AI agents such as:
+
+* Aider (code generation & editing)
+* Codeium (autocomplete)
+* ChatGPT (architecture & logic)
+
+Example prompt:
+
+```
+Add contract PDF generation to the booking system
+```
+
+---
+
+## ⚠️ Limitations (MVP Scope)
+
+* No payment gateway
+* No multi-tenant SaaS yet
+* Basic UI only
+* Limited security hardening
+
+This is intentional — focus is on **speed, validation, and iteration**.
+
+---
+
+## 🚀 Roadmap
+
+### Phase 1 (Current)
+
+* MVP plugin
+* Basic booking + GPS
+
+### Phase 2
+
+* API backend (Node.js / Laravel)
+* External database
+* Automation expansion
+
+### Phase 3
+
+* Full SaaS dashboard (Next.js)
+* Multi-client support
+* Subscription system
+
+---
+
+## 💡 Vision
+
+LocaGest is not just a plugin.
+
+It is becoming:
+
+> A SaaS platform combining **fleet tracking + rental management + automation + AI**
+
+---
+
+## 📜 License
+
+MIT License (or your preferred license)
+
+---
+
+## 🤝 Contributing
+
+This project is evolving fast. Contributions, ideas, and improvements are welcome.
+
+---
+
+## 🔥 Final Note
+
+This MVP is designed to:
+
+* launch fast
+* validate with real clients
+* evolve into a full SaaS
+
+Don’t over-engineer early — build, test, iterate.
+
+---
